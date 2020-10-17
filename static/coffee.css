@@ -15,3 +15,15 @@ h1{
   margin-right: auto;
   width: 150px;
 }
+
+input{
+    margin-top: 10px;
+    color: PaleVioletRed;
+    background-color : PapayaWhip;
+}
+
+label{
+    color: plum;
+    margin-top: 10px;
+}
+
