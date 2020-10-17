@@ -1,11 +1,22 @@
 // test to see if it reads the console line
-console.log("Hello world"); 
 
-// create a success 
+console.log("Hello world");
+
+/**
+ * Success is called when the answer is returned from the server. This
+ * updates the answer text to the answer returned by the server
+ */
 function success(data) {
     console.log("success=" + data);
     $("#answer").text("Answer=" + data);
 }
+ 
+
+function setup() {
+    console.log("I have linked Javascript!");
+}
+
+$(document).ready(setup);
 
 
  // will modify will send answer or response to user once it has been calculated or reviewed 
