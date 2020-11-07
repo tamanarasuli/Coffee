@@ -44,6 +44,38 @@ db.run(
         }
     }
 );
+let toHide = true;
+function insert() {
+    let name = "tamana"; 
+    let goal = 5; 
+    let intake = 3; 
+    let storedResults = null;
+    db.serialize(() => {
+// let sql = 'INSERT INTO user(name, goal, intake) ' +
+//  'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
+// console.log(sql);
+let sql = 'INSERT INTO user(name, goal, intake) ' +
+'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
+console.log(sql);
+db.run(sql, [], (err) => {
+    if (err) {
+        console.error(err.message);
+        
+        
+    }
+    
+}
+);
+
+        
+    });
+}
+
+//function setup() {
+//    $("#button").click(insert);
+    
+}
+
     
     // create table if not yet created
     
