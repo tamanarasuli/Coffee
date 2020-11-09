@@ -1,0 +1,21 @@
+html
+    head
+        title=title
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        script(src='../static/track.js')
+        style
+            include ../static/coffee.css
+    body
+  
+        h1 Coffee Tracker
+          img.center(src='steam.gif')
+          img.center(src='cc1.jpg')
+        label.cent(for='username') What&apos;s your name?
+        input#username.center(type='text'  name='username')
+        input#name.button(type='submit'  value='Enter')
+        label.cent(for='username') Goal?
+        input#quantity.center(type='number'  name='quantity'  min='1')
+        input#goal.button(type='submit'  value='SET')
+        label.cent(for='quantity') How much coffee did you drink?(in ounces)
+        input#quantity.center(type='number' name='quantity'  min='1')
+        input#intake.button(type='submit' value='Add Cup')
