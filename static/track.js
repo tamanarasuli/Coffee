@@ -2,18 +2,19 @@
 
 console.log("Hello world");
 
-/**
- * Success is called when the answer is returned from the server. This
- * updates the answer text to the answer returned by the server
- */
-function success(data) {
-    console.log("success=" + data);
-    $("#answer").text("Answer=" + data);
+function send(name, goal, intake) {
+    let url = "/insert/name/" + name + "/goal/" + goal + "/intake/" + intake;
+    console.log(url);
+    window.location.replace(url);
 }
  
 
 function setup() {
     console.log("I have linked Javascript!");
+}
+
+function setup() {
+    $("#intake").click(insert);
 }
 
 $(document).ready(setup);

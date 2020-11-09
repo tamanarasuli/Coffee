@@ -5,12 +5,13 @@ const port = 80;
 //const sqlite3 = require('sqlite3'); 
 
 /**
- * The index function redirects the user to request "coffee.html"
+ * The coffee function redirects the user to request "coffee.pug"
  */
  
 function coffee(req, res) {
     res.redirect('/coffee.html');
 }
+
 
 app.use(express.static("static"));
 
@@ -19,10 +20,9 @@ app.get('/', coffee);
 
 
     // create database
-    
-    const sqlite3 = require('sqlite3').verbose();
+ const sqlite3 = require('sqlite3').verbose();
     let db = new sqlite3.Database(
-        "./coffee.db",
+        "./coffeeTracker.db",
         sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
         (err) => {
             if (err) {
@@ -34,7 +34,7 @@ app.get('/', coffee);
     );
     
 db.run(
-    'CREATE TABLE IF NOT EXISTS user(ounces, name)',
+    'CREATE TABLE IF NOT EXISTS user(name, goal, intake)',
     [],
     (err) => {
         if (err) {
@@ -44,43 +44,42 @@ db.run(
         }
     }
 );
-let toHide = true;
-function insert() {
-    let name = "tamana"; 
-    let goal = 5; 
-    let intake = 3; 
-    let storedResults = null;
-    db.serialize(() => {
-// let sql = 'INSERT INTO user(name, goal, intake) ' +
-//  'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
-// console.log(sql);
-let sql = 'INSERT INTO user(name, goal, intake) ' +
-'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
-console.log(sql);
-db.run(sql, [], (err) => {
-    if (err) {
-        console.error(err.message);
-        
-        
-    }
-    
-}
-);
 
-        
+
+function insert() {
+    // let name = "tamana"; 
+    // let goal = 5; 
+    // let intake = 3; 
+    db.serialize(() => {
+        let sql = 'INSERT INTO user(name, goal, intake) ' +
+        'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
+            console.log(sql);
+// let sql = 'INSERT INTO user(name, goal, intake) ' +
+// 'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
+            console.log(sql);
+    db.run(sql, [], (err) => {
+        if (err) {
+            console.error(err.message);
+        }
+    });
+
     });
 }
 
-//function setup() {
-//    $("#button").click(insert);
-    
-}
 
-    
-    // create table if not yet created
-    
+// function setup() {
+//     $("#intake").click(insert);
+// }
+// app.get ('/', function (req, res){
+//     res.render('coffee', {}); 
+// }); 
+ app.use(express.static("static"));  
+// app.set('views', './views') 
+//  app.set('view engine', 'pug')
+//  app.get('/', coffee);
+ app.get('/insert/name/:name/goal/:goal/intake/:intake', insert);
+ 
 
-// listen in on port
 
 app.listen(port, function() {
     console.log("App running at port=" + port);
