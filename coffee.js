@@ -85,12 +85,32 @@ function insert(req, res) {
 //  }
 
 
-
+<<<<<<< HEAD
+=======
+function insert(req, res) {
+    console.log(req.params);
+    let name = req.params.name; 
+    let goal = req.params.goal; 
+    let intake = req.params.intake; 
+    db.serialize(() => {
+    //     let sql = 'INSERT INTO user(name, goal, intake) ' +
+    //     'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
+    //         console.log(sql);
+let sql = 'INSERT INTO user(name, goal, intake) ' +
+'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
+            console.log(sql);
+    db.run(sql, [], (err) => {
+        if (err) {
+            console.error(err.message);
+        }
+    });
+>>>>>>> 774b39caad8fa03d4ce6a646e28643bf1b961025
 
 
 // function setup() {
 //     $("#intake").click(insert);
 // }
+<<<<<<< HEAD
 //app.get('/', function(req, res){
  //   res.render('coffee', {}); 
    
@@ -102,6 +122,12 @@ function insert(req, res) {
 app.use(express.static("static"));  
 app.set('views', './views') 
 app.set('view engine', 'pug')
+=======
+
+app.use(express.static("static"));  
+app.set('views', './views'); 
+app.set('view engine', 'pug');
+>>>>>>> 774b39caad8fa03d4ce6a646e28643bf1b961025
 app.get('/', coffee);
 app.get('/insert/name/:name/goal/:goal/intake/:intake', insert);
  
