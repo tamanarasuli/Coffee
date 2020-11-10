@@ -129,7 +129,7 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.get('/', coffee);
-app.get('/insertData/name/:name/goal/:goal/intake/:intake', insert);
+app.get('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
  
 
 
