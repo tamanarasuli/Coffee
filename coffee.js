@@ -46,16 +46,17 @@ db.run(
 );
 
 
-function insert() {
-    // let name = "tamana"; 
-    // let goal = 5; 
-    // let intake = 3; 
+function insert(req, res) {
+    console.log(req.params);
+    let name = req.params.name; 
+    let goal = req.params.goal; 
+    let intake = req.params.intake; 
     db.serialize(() => {
-        let sql = 'INSERT INTO user(name, goal, intake) ' +
-        'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
-            console.log(sql);
-// let sql = 'INSERT INTO user(name, goal, intake) ' +
-// 'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
+    //     let sql = 'INSERT INTO user(name, goal, intake) ' +
+    //     'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
+    //         console.log(sql);
+let sql = 'INSERT INTO user(name, goal, intake) ' +
+'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
             console.log(sql);
     db.run(sql, [], (err) => {
         if (err) {
@@ -66,18 +67,15 @@ function insert() {
     });
 }
 
-
 // function setup() {
 //     $("#intake").click(insert);
 // }
-// app.get ('/', function (req, res){
-//     res.render('coffee', {}); 
-// }); 
- app.use(express.static("static"));  
-// app.set('views', './views') 
-//  app.set('view engine', 'pug')
-//  app.get('/', coffee);
- app.get('/insert/name/:name/goal/:goal/intake/:intake', insert);
+
+app.use(express.static("static"));  
+app.set('views', './views'); 
+app.set('view engine', 'pug');
+app.get('/', coffee);
+app.get('/insert/name/:name/goal/:goal/intake/:intake', insert);
  
 
 
