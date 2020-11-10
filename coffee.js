@@ -86,7 +86,7 @@ function insert(req, res) {
 
 
 
-function insert(req, res) {
+function insertData(req, res) {
     console.log(req.params);
     let name = req.params.name; 
     let goal = req.params.goal; 
@@ -129,7 +129,7 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.get('/', coffee);
-app.get('/insert/name/:name/goal/:goal/intake/:intake', insert);
+app.get('/insertData/name/:name/goal/:goal/intake/:intake', insert);
  
 
 
