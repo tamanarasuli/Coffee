@@ -85,8 +85,7 @@ function insert(req, res) {
 //  }
 
 
-<<<<<<< HEAD
-=======
+
 function insert(req, res) {
     console.log(req.params);
     let name = req.params.name; 
@@ -104,13 +103,16 @@ let sql = 'INSERT INTO user(name, goal, intake) ' +
             console.error(err.message);
         }
     });
->>>>>>> 774b39caad8fa03d4ce6a646e28643bf1b961025
+    }); 
+}
+
+
 
 
 // function setup() {
 //     $("#intake").click(insert);
 // }
-<<<<<<< HEAD
+
 //app.get('/', function(req, res){
  //   res.render('coffee', {}); 
    
@@ -119,15 +121,13 @@ let sql = 'INSERT INTO user(name, goal, intake) ' +
 // app.get ('/', function (req, res){
 //     res.render('coffee', {}); 
 // }); 
-app.use(express.static("static"));  
-app.set('views', './views') 
-app.set('view engine', 'pug')
-=======
+
+
 
 app.use(express.static("static"));  
 app.set('views', './views'); 
 app.set('view engine', 'pug');
->>>>>>> 774b39caad8fa03d4ce6a646e28643bf1b961025
+
 app.get('/', coffee);
 app.get('/insert/name/:name/goal/:goal/intake/:intake', insert);
  
