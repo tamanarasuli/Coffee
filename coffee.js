@@ -1,4 +1,3 @@
-// create requirements and define server 
 const express = require('express');
 const app = express();
 const port = 80;
@@ -9,17 +8,15 @@ const port = 80;
  */
  
 function coffee(req, res) {
-    res.redirect('/coffee.html');
+    res.redirect('./views/coffee.pug');
 }
 
 
 app.use(express.static("static"));
 
 // Calling "/" invokes the index function
-app.get('/', coffee);
+//app.get('/', coffee);
 
-
-    // create database
  const sqlite3 = require('sqlite3').verbose();
     let db = new sqlite3.Database(
         "./coffeeTracker.db",
@@ -44,40 +41,69 @@ db.run(
         }
     }
 );
-
-
-function insert() {
-    // let name = "tamana"; 
-    // let goal = 5; 
-    // let intake = 3; 
-    db.serialize(() => {
-        let sql = 'INSERT INTO user(name, goal, intake) ' +
-        'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
-            console.log(sql);
-// let sql = 'INSERT INTO user(name, goal, intake) ' +
-// 'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
-            console.log(sql);
-    db.run(sql, [], (err) => {
-        if (err) {
-            console.error(err.message);
-        }
-    });
-
-    });
+function coffee(req, res){
+    insert(req, res);
 }
+function insert(req, res) {
+    db.all(
+        'SELECT * FROM user', [], (err, rows) => {
+            if (err) {
+                console.error(err.message);
+            } else {
+                console.log("Got all answers:");
+                console.log(rows);
+                console.log("Sending response");
+                let args = {
+                    title: "Coffee Tracker",
+                    result: rows,
+                }
+                res.render('coffee', args);
+            }
+        }
+    );
+}
+
+
+
+// function insert() {
+//     let name = "tamana"; 
+//     let goal = 5; 
+//     let intake = 3; 
+//      db.serialize(() => {
+         
+//          let sql = 'INSERT INTO user(name, goal, intake) ' +
+//          'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
+//          console.log(sql);
+//          db.run(sql, [], (err) => {
+//              if (err) {
+//                  console.error(err.message);
+                
+//              }
+            
+//          });
+//      });
+//  }
+
+
+
 
 
 // function setup() {
 //     $("#intake").click(insert);
 // }
+//app.get('/', function(req, res){
+ //   res.render('coffee', {}); 
+   
+// });
+
 // app.get ('/', function (req, res){
 //     res.render('coffee', {}); 
 // }); 
- app.use(express.static("static"));  
-// app.set('views', './views') 
-//  app.set('view engine', 'pug')
-//  app.get('/', coffee);
- app.get('/insert/name/:name/goal/:goal/intake/:intake', insert);
+app.use(express.static("static"));  
+app.set('views', './views') 
+app.set('view engine', 'pug')
+app.get('/', coffee);
+app.get('/insert/name/:name/goal/:goal/intake/:intake', insert);
  
 
 
