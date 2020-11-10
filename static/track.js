@@ -5,10 +5,10 @@ console.log("Hello world");
 function send() {
     //console.log("name" + name);
     let name =$("#username").val();
-    let goal = $("#quantity").val(); 
+    let goal = $("#goal").val(); 
     let intake = $("#quantity").val(); 
     if (name !== ""){
-      let url = "/insert/name/" + name + "/goal/" + goal + "/intake/" + intake;
+      let url = "/insertData/name/" + name + "/goal/" + goal + "/intake/" + intake;
     console.log(url); 
       window.location.replace(url);
     }
