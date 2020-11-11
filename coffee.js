@@ -1,10 +1,7 @@
 const express = require('express');
 const app = express();
-//const port = 80;
-
-
-const path = require('path')
-const port = process.env.port || 80
+// Start Express listening at the given port
+let PORT = process.env.PORT || 80;
 //const sqlite3 = require('sqlite3'); 
 
 /**
@@ -104,11 +101,11 @@ function insertData(req, res) {
 let sql = 'INSERT INTO user(name, goal, intake) ' +
 'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
             console.log(sql);
-<<<<<<< HEAD
-            res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
-=======
+
+            //res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
+
             //  res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
->>>>>>> 00fd83850061f0ab4f45943a583f679425fbc458
+
     db.run(sql, [], (err) => {
         if (err) {
             console.error(err.message);
@@ -118,11 +115,9 @@ let sql = 'INSERT INTO user(name, goal, intake) ' +
         // res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
     });
     });
-<<<<<<< HEAD
-    
-=======
+
     res.redirect('/'); 
->>>>>>> 00fd83850061f0ab4f45943a583f679425fbc458
+
 }
 
 
@@ -153,6 +148,6 @@ app.get('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
  
 
 
-app.listen(port, function() {
-    console.log("App running at port=" + port);
+app.listen(PORT, function() {
+    console.log("App running at port=" + PORT);
 });
