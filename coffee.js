@@ -1,6 +1,7 @@
-const express = require('express');
-const app = express();
-const port = 80;
+
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
 //const sqlite3 = require('sqlite3'); 
 
 /**
