@@ -95,9 +95,11 @@ function insertData(req, res) {
     //     let sql = 'INSERT INTO user(name, goal, intake) ' +
     //     'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
     //         console.log(sql);
+    //res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
 let sql = 'INSERT INTO user(name, goal, intake) ' +
 'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
             console.log(sql);
+            //  res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
     db.run(sql, [], (err) => {
         if (err) {
             console.error(err.message);
@@ -107,8 +109,9 @@ let sql = 'INSERT INTO user(name, goal, intake) ' +
         // res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
     });
     });
-    res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
+    res.redirect('/'); 
 }
+
 
 
 
