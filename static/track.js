@@ -1,5 +1,3 @@
-// test to see if it reads the console line
-
 console.log("Hello world");
 
 function send() {
