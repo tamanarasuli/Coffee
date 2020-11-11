@@ -6,7 +6,7 @@ function send() {
     //console.log("name" + name);
     let name =$("#username").val();
     let goal = $("#quantity").val(); 
-    let intake = $("#quantity").val(); 
+    let intake = $("#goal").val(); 
     if (name !== ""){
       let url = "/insertData/name/" + name + "/goal/" + goal + "/intake/" + intake;
     console.log(url); 
