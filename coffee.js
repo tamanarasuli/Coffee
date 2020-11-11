@@ -101,9 +101,13 @@ let sql = 'INSERT INTO user(name, goal, intake) ' +
     db.run(sql, [], (err) => {
         if (err) {
             console.error(err.message);
+        // } else {
+        //   res.redirect('back'); 
         }
+        // res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
     });
-    }); 
+    });
+    res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
 }
 
 
