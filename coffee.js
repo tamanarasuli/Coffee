@@ -4,7 +4,7 @@ const app = express();
 
 
 const path = require('path')
-const port = process.env.port || 5000
+const port = process.env.port || 80
 //const sqlite3 = require('sqlite3'); 
 
 /**
