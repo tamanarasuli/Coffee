@@ -100,10 +100,15 @@ function insertData(req, res) {
     //     let sql = 'INSERT INTO user(name, goal, intake) ' +
     //     'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
     //         console.log(sql);
+    //res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
 let sql = 'INSERT INTO user(name, goal, intake) ' +
 'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
             console.log(sql);
+<<<<<<< HEAD
             res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
+=======
+            //  res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
+>>>>>>> 00fd83850061f0ab4f45943a583f679425fbc458
     db.run(sql, [], (err) => {
         if (err) {
             console.error(err.message);
@@ -113,8 +118,13 @@ let sql = 'INSERT INTO user(name, goal, intake) ' +
         // res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
     });
     });
+<<<<<<< HEAD
     
+=======
+    res.redirect('/'); 
+>>>>>>> 00fd83850061f0ab4f45943a583f679425fbc458
 }
+
 
 
 
