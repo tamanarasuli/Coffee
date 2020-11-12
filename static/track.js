@@ -15,21 +15,33 @@ function send() {
     // window.location.replace(url);
 }
  
-
-function setup() {
-    console.log("I have linked Javascript!");
-    //var name = $("username").val();
-    //console.log(name);
-    // console.log($("#username").val());
-    // let name = $("#username").val(); 
-    // console.log(name); 
-     
-    //send("x",1,1);
-    //  $("#intake").click(send($("#username").val(), $("quantity").val(), $("quantity").val()));
-    
-      $("#intake").click(send());
+function negative(goal, intake) {
+    // let word = $("#quantity").val(); 
+    let flag = false; 
+    if (goal < 0 || intake < 0) {
+        flag = true;
+         //alert("Enter a valid cup amount, please "); 
+        return flag; 
+     } else {
+         send(name, goal, intake); 
+     }
 }
+exports.negative = negative; 
 
-$(document).ready(setup);
+// function setup() {
+//     console.log("I have linked Javascript!");
+//     //var name = $("username").val();
+//     //console.log(name);
+//     // console.log($("#username").val());
+//     // let name = $("#username").val(); 
+//     // console.log(name); 
+     
+//     //send("x",1,1);
+//     //  $("#intake").click(send($("#username").val(), $("quantity").val(), $("quantity").val()));
+    
+//       $("#intake").click(send());
+// }
+
+//$(document).ready(setup);
 
 
