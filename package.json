@@ -1,10 +1,9 @@
 {
   "name": "coffee",
   "version": "1.0.0",
-  "description": "",
   "main": "coffee.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -17,9 +16,16 @@
   },
   "homepage": "https://github.com/tamanarasuli/Coffee#readme",
   "dependencies": {
+    "chai": "^4.2.0",
     "express": "^4.17.1",
     "heroku": "^7.47.1",
+    "mocha": "^8.2.1",
     "pug": "^3.0.0",
     "sqlite3": "^5.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "description": ""
 }
