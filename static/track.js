@@ -23,10 +23,36 @@ function negative(goal, intake) {
          //alert("Enter a valid cup amount, please "); 
         return flag; 
      } else {
-         send(name, goal, intake); 
+         //send(name, goal, intake); 
+     }
+}
+
+function empty(name, goal, intake){
+    let flag = false;
+    if(name == null || goal == null || intake == null){
+        flag = true;
+        return flag;
+    }
+    
+}
+
+function less(goal, intake) {
+   
+    let flag = false; 
+    if (intake < goal) {
+        flag = true;
+         //alert("Enter a valid cup amount, please "); 
+         return flag;
+        
+     } else {
+         
+         
+         //send(name, goal, intake); 
      }
 }
 exports.negative = negative; 
+exports.less = less;
+exports.empty = empty;
 
 // function setup() {
 //     console.log("I have linked Javascript!");
