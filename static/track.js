@@ -15,59 +15,20 @@ function send() {
     // window.location.replace(url);
 }
  
-function negative(goal, intake) {
-    // let word = $("#quantity").val(); 
-    let flag = false; 
-    if (goal < 0 || intake < 0) {
-        flag = true;
-         //alert("Enter a valid cup amount, please "); 
-        return flag; 
-     } else {
-         //send(name, goal, intake); 
-     }
-}
 
-function empty(name, goal, intake){
-    let flag = false;
-    if(name == null || goal == null || intake == null){
-        flag = true;
-        return flag;
-    }
-    
-}
-
-function less(goal, intake) {
-   
-    let flag = false; 
-    if (intake < goal) {
-        flag = true;
-         //alert("Enter a valid cup amount, please "); 
-         return flag;
-        
-     } else {
-         
-         
-         //send(name, goal, intake); 
-     }
-}
-exports.negative = negative; 
-exports.less = less;
-exports.empty = empty;
-
-// function setup() {
-//     console.log("I have linked Javascript!");
-//     //var name = $("username").val();
-//     //console.log(name);
-//     // console.log($("#username").val());
-//     // let name = $("#username").val(); 
-//     // console.log(name); 
+function setup() {
+    console.log("I have linked Javascript!");
+    let name = $("#username").val(); 
+    console.log(name);
+    console.log($("#username").val());
+    console.log(name); 
      
-//     //send("x",1,1);
-//     //  $("#intake").click(send($("#username").val(), $("quantity").val(), $("quantity").val()));
+    //send("x",1,1);
+    //  $("#intake").click(send($("#username").val(), $("quantity").val(), $("quantity").val()));
     
-//       $("#intake").click(send());
-// }
+      $("#intake").click(send());
+}
 
-//$(document).ready(setup);
+$(document).ready(setup);
 
 
