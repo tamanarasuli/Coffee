@@ -21,9 +21,11 @@ function negative(name, goal,  intake) {
     if (goal < 0 || intake < 0) {
         alert("Enter a valid cup amount, please "); 
             return true; 
-     }  //else {
-    //      send(name, goal, intake); 
-    //}
+     } else if (goal == null || intake == null) {
+         alert("please enter a values ");
+     }  else {
+          send(name, goal, intake); 
+    }
 }
 
 
@@ -33,6 +35,7 @@ function handleRespones() {
     let name =$("#username").val();
     let goal = $("#quantity").val();
      let intake = $("#goal").val(); 
+     negative(); 
     // input checks 
     
     
@@ -43,7 +46,7 @@ function handleRespones() {
 
 function setup() {
     console.log("I have linked Javascript!");
-    $("#intake").click(negative);
+    $("#intake").click(handleRespones);
 }
 
 $(document).ready(setup);
