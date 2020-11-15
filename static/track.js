@@ -1,9 +1,9 @@
 console.log("Hello world");
 
 function send(name, goal, intake) {
-     name =$("#username").val();
-     goal = $("#quantity").val(); 
-     intake = $("#goal").val(); 
+    //  name =$("#username").val();
+    //  goal = $("#quantity").val(); 
+    //  intake = $("#goal").val(); 
     if (name !== ""){
       let url = "/insertData/name/" + name + "/goal/" + goal + "/intake/" + intake;
     console.log(url); 
@@ -11,26 +11,39 @@ function send(name, goal, intake) {
     }
     
 }
-function negative(goal, intake) {
+
+// create  this function for all error handling 
+function negative(name, goal,  intake) {
+    // let name =$("#username").val();
+    // let goal = $("#quantity").val();
+    //  let intake = $("#goal").val(); 
     let flag = false; 
     if (goal < 0 || intake < 0) {
         alert("Enter a valid cup amount, please "); 
             return true; 
-     } else {
-         send("intake", name, goal, intake); 
-    }
+     }  //else {
+    //      send(name, goal, intake); 
+    //}
 }
 
 
-function doNegative() {
-    negative(goal, intake);
+
+
+function handleRespones() {
+    let name =$("#username").val();
+    let goal = $("#quantity").val();
+     let intake = $("#goal").val(); 
+    // input checks 
+    
+    
 }
+
 
  
 
 function setup() {
     console.log("I have linked Javascript!");
-    $("#intake").click(doNegative);
+    $("#intake").click(negative);
 }
 
 $(document).ready(setup);
