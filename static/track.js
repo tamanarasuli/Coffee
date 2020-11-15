@@ -14,23 +14,28 @@ function send(name, goal, intake) {
 
 // create  this function for all error handling 
 function negative(name, goal,  intake) {
-    // let name =$("#username").val();
-    // let goal = $("#quantity").val();
-    //  let intake = $("#goal").val(); 
+    name =$("#username").val();
+    goal = $("#quantity").val();
+    intake = $("#goal").val(); 
     let flag = false; 
     if (goal < 0 || intake < 0) {
         alert("Enter a valid cup amount, please "); 
             return true; 
-     } else if (goal == null || intake == null) {
+     } if (goal == 0 || intake == 0 || name == " ") {
          alert("please enter a values ");
-     }  else {
+         return true; 
+     } if (intake > goal) {
+         alert("Sorry, you did not meet your goal"); 
+         send(name, goal, intake); 
+    } else {
+        alert("Congratulations, you have met your goal!"); 
           send(name, goal, intake); 
     }
 }
 
 
 
-
+// send to all error handling to be checked 
 function handleRespones() {
     let name =$("#username").val();
     let goal = $("#quantity").val();
@@ -43,7 +48,7 @@ function handleRespones() {
 
 
  
-
+// check error handling when add cup is pressed
 function setup() {
     console.log("I have linked Javascript!");
     $("#intake").click(handleRespones);
