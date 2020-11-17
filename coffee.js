@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 // Start Express listening at the given port
 let PORT = process.env.PORT || 80;
 //const sqlite3 = require('sqlite3'); 
@@ -8,9 +9,6 @@ let PORT = process.env.PORT || 80;
  * The coffee function redirects the user to request "coffee.pug"
  */
  
-function coffee(req, res) {
-    res.redirect('./views/coffee.pug');
-}
 
 
 app.use(express.static("static"));
@@ -139,11 +137,27 @@ let sql = 'INSERT INTO user(name, goal, intake) ' +
 
 
 
-app.use(express.static("static"));  
-app.set('views', './views'); 
+app.use(express.static("static"));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.get('/', coffee);
+app.get('/', function(req, res){
+  res.render('page1', {
+    title: 'Login'
+  });
+});
+
+app.get('/newpage', function(req, res){
+  res.render('anotherpage', {
+    title: 'Sign Up'
+  });
+});
+app.get('/newpage', function(req, res){
+  res.render('coffee', {
+    title: 'Home'
+  });
+});
+
 app.get('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
  
 
