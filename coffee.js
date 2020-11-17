@@ -147,12 +147,12 @@ app.get('/', function(req, res){
   });
 });
 
-app.get('/newpage', function(req, res){
+app.get('/signup', function(req, res){
   res.render('anotherpage', {
     title: 'Sign Up'
   });
 });
-app.get('/newpage', function(req, res){
+app.get('/home', function(req, res){
   res.render('coffee', {
     title: 'Home'
   });
