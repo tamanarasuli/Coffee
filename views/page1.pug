@@ -1,0 +1,23 @@
+head
+    title= title
+    style
+        include ../static/coffee.css
+body
+
+    div.label Login
+      div.username
+        input(type="text" id = 'name' placeholder="username")
+      div.password
+        input(type="password" id = 'pass' placeholder="password")
+      div.checkbox
+        input(type='checkbox' name='agreement')
+        |Remember me
+      button(onclick="move()") Login
+      p
+        | Don't have an account?
+      button(onclick="move()") Sign Up
+script.
+  function move() {
+    window.location.href = '/newpage'
+  }
+  
