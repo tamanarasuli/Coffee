@@ -1,5 +1,6 @@
 head
     title= title
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
     style
         include ../static/coffee.css
 body
@@ -11,4 +12,8 @@ body
         input(type="text" id = 'name' placeholder="username")
       div.password
         input(type="password" id = 'pass' placeholder="password")
-        button(type="submit" ) Sign Up
+        button(onclick="movep()") Sign Up
+script.
+  function movep() {
+    window.location.href = '/home'
+  }
