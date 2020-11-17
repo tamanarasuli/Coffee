@@ -157,6 +157,11 @@ app.get('/home', function(req, res){
     title: 'Home'
   });
 });
+app.get('/home', function(req, res){
+  res.render('anotherpage', {
+    title: 'Home'
+  });
+});
 
 app.get('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
  
