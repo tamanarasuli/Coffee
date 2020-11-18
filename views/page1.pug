@@ -4,17 +4,17 @@ head
     style
         include ../static/coffee.css
 body
-
-    div.label Login
+    h1 Coffee Tracker
+    div.label.cent(style = "text-align:center;color: #fff") Login
       div.username
-        input(type="text" id = 'name' placeholder="username")
-      div.password
-        input(type="password" id = 'pass' placeholder="password")
+        input.center(type="text" id = 'name' placeholder="username")
+      div.password.cent
+        input.center(type="password" id = 'pass' placeholder="password")
      
-      button(onclick="movep()") Login
+      button.button.center(onclick="movep()") Login
       p
         | Don't have an account?
-      button(onclick="move()") Sign Up
+      button.button.center(onclick="move()") Sign Up
 script.
   function move() {
     window.location.href = '/signup'
