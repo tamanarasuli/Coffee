@@ -1,20 +1,17 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-// Start Express listening at the given port
 let PORT = process.env.PORT || 80;
-//const sqlite3 = require('sqlite3'); 
+
 
 /**
- * The coffee function redirects the user to request "coffee.pug"
+ * Connect and create database if not exists"
  */
  
 
 
 app.use(express.static("static"));
 
-// Calling "/" invokes the index function
-//app.get('/', coffee);
 
  const sqlite3 = require('sqlite3').verbose();
     let db = new sqlite3.Database(
@@ -29,6 +26,11 @@ app.use(express.static("static"));
         }
     );
     
+    
+/**
+ * Create tables for the user and for the signup"
+ */
+ 
 db.run(
     'CREATE TABLE IF NOT EXISTS user(name, goal, intake)',
     [],
@@ -55,9 +57,17 @@ db.run(
         }
     }
 );
+
 function coffee(req, res){
     insert(req, res);
 }
+
+
+/**
+ * renders the pug"
+ */
+ 
+ 
 function insert(req, res) {
     db.all(
         'SELECT * FROM user', [], (err, rows) => {
@@ -80,72 +90,60 @@ function insert(req, res) {
 
 
 
-
+/**
+ * inserts the data from the main coffee tracker UI"
+ */
 
 
 function insertData(req, res) {
-    
     console.log(req.params);
     let name = req.params.name; 
     let goal = req.params.goal; 
     let intake = req.params.intake;
     db.serialize(() => {
-    //     let sql = 'INSERT INTO user(name, goal, intake) ' +
-    //     'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
-    //         console.log(sql);
-    //res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
 let sql = 'INSERT INTO user(name, goal, intake) ' +
 'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
             console.log(sql);
-
-            //res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
-
-            //  res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
-
-    db.run(sql, [], (err) => {
-        if (err) {
-            console.error(err.message);
-        // } else {
-        //   res.redirect('back'); 
+db.run(sql, [], (err) => {
+    if (err) {
+         console.error(err.message);
         }
-        // res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData); 
-    });
+        
+        });
     });
 
     res.redirect('/'); 
 
 }
 
+/**
+ * inserts the signup from the user"
+ */
+
 
 function insertSignUp(req, res) {
-
     let email = req.params.email; 
     let username = req.params.username; 
     let password = req.params.password; 
     console.log("got to the insert signup page"); 
     db.serialize(() => {
-    //     let sql = 'INSERT INTO user(name, goal, intake) ' +
-    //     'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
-    //         console.log(sql);
-    //res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
-let sql = 'INSERT INTO signup(email, username, password) ' +
-'VALUES("' + email + '", "' + username + '", "'  + password + '");'; 
-            console.log(sql);
-
+        let sql = 'INSERT INTO signup(email, username, password) ' +
+        'VALUES("' + email + '", "' + username + '", "'  + password + '");'; 
+        console.log(sql);
     db.run(sql, [], (err) => {
         if (err) {
             console.error(err.message);
         }
          
+        });
     });
-    });
-
     res.redirect('/'); 
-
 }
 
 
-
+/**
+ * redirects pages and gets the urls for server side"
+ */
 
 
 
@@ -164,11 +162,13 @@ app.get('/signup', function(req, res){
     title: 'Sign Up'
   });
 });
+
 app.get('/home', function(req, res){
   res.render('coffee', {
     title: 'Home'
   });
 });
+
 app.get('/home', function(req, res){
   res.render('anotherpage', {
     title: 'Home'
