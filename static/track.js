@@ -1,9 +1,7 @@
-console.log("Hello world");
-
+/**
+ * get url and replace  for the insertData"
+ */
 function send(name, goal, intake) {
-    //  name =$("#username").val();
-    //  goal = $("#quantity").val(); 
-    //  intake = $("#goal").val(); 
     if (name !== ""){
       let url = "/insertData/name/" + name + "/goal/" + goal + "/intake/" + intake;
     console.log(url); 
@@ -12,16 +10,21 @@ function send(name, goal, intake) {
     
 }
 
+/**
+ * get url and replace for the insert in signup"
+ */
+
 function insert(email, username, password) {
       let url = "/insertSignUp/email/" + email + "/username/" + username + "/password/" + password;
-    console.log(url); 
+      console.log(url); 
       window.location.replace(url);
       console.log("made it to the insert to the signup function"); 
-    
 }
 
-
-// create  this function for all error handling 
+/**
+ *Error handling"
+ */
+ 
 function negative(name, goal,  intake) {
     name =$("#username").val();
     goal = $("#quantity").val();
@@ -30,7 +33,7 @@ function negative(name, goal,  intake) {
     if (goal < 0 || intake < 0) {
         alert("Enter a valid cup amount, please "); 
             return true; 
-     } if (goal == 0 || intake == 0 || name == " ") {
+    } if (goal == 0 || intake == 0 || name == " ") {
          alert("please enter a values ");
          return true; 
      } if (intake > goal) {
@@ -48,37 +51,28 @@ function signUp(email, name, password) {
     username = $("#name").val(); 
     password = $("#pass").val(); 
     console.log(email); 
-    
     if(password == " " || username == " " || email == " ") {
         alert("enter a password, please"); 
     }
-    // if (password.length() <  8) {
-    //     alert("enter at least 8 characters, please"); 
-    // }
-    // if(email.charAt(i)!= '@') {
-    //     alert("please type in a valid email address.");
-    
-        else {
+    else {
         insert(email, username, password); 
     }
 }
 
-
-
-// send to all error handling to be checked 
+/**
+ * call negative and define values "
+ */
 function handleRespones() {
     let name =$("#username").val();
     let goal = $("#quantity").val();
-     let intake = $("#goal").val(); 
-     negative(); 
-    // input checks 
-    
-    
+    let intake = $("#goal").val(); 
+    negative(); 
 }
 
-
+/**
+ * check error handling when the button is pressed"
+ */
  
-// check error handling when add cup is pressed
 function setup() {
     console.log("I have linked Javascript!");
     $("#intake").click(handleRespones);
