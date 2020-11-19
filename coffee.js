@@ -40,6 +40,18 @@ db.run(
         }
     }
 );
+
+db.run(
+    'CREATE TABLE IF NOT EXISTS signup(email, username, password)',
+    [],
+    (err) => {
+        if (err) {
+            console.error(err.message);
+        } else {
+            console.log("Table created");
+        }
+    }
+);
 function coffee(req, res){
     insert(req, res);
 }
@@ -64,24 +76,7 @@ function insert(req, res) {
 
 
 
-// function insert() {
-//     let name = "tamana"; 
-//     let goal = 5; 
-//     let intake = 3; 
-//      db.serialize(() => {
-         
-//          let sql = 'INSERT INTO user(name, goal, intake) ' +
-//          'VALUES("' + name + '", "' + goal + '",  "' + intake + '");'; 
-//          console.log(sql);
-//          db.run(sql, [], (err) => {
-//              if (err) {
-//                  console.error(err.message);
-                
-//              }
-            
-//          });
-//      });
-//  }
+
 
 
 
@@ -119,21 +114,35 @@ let sql = 'INSERT INTO user(name, goal, intake) ' +
 }
 
 
+function insertSignUp(req, res) {
+
+    let email = req.params.email; 
+    let username = req.params.username; 
+    let password = req.params.password; 
+    console.log("got to the insert signup page"); 
+    db.serialize(() => {
+    //     let sql = 'INSERT INTO user(name, goal, intake) ' +
+    //     'VALUES("' + req.params.name + '", "' + req.params.goal + '",  "' + req.params.intake + '");'; 
+    //         console.log(sql);
+    //res.redirect('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
+let sql = 'INSERT INTO signup(email, username, password) ' +
+'VALUES("' + email + '", "' + username + '", "'  + password + '");'; 
+            console.log(sql);
+
+    db.run(sql, [], (err) => {
+        if (err) {
+            console.error(err.message);
+        }
+         
+    });
+    });
+
+    res.redirect('/'); 
+
+}
 
 
 
-// function setup() {
-//     $("#intake").click(insert);
-// }
-
-//app.get('/', function(req, res){
- //   res.render('coffee', {}); 
-   
-// });
-
-// app.get ('/', function (req, res){
-//     res.render('coffee', {}); 
-// }); 
 
 
 
@@ -164,7 +173,7 @@ app.get('/home', function(req, res){
 });
 
 app.get('/insertData/name/:name/goal/:goal/intake/:intake', insertData);
- 
+app.get('/insertSignUp/email/:email/username/:username/password/:password', insertSignUp);
 
 
 app.listen(PORT, function() {
