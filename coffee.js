@@ -41,6 +41,9 @@ db.run(
     }
 );
 
+
+
+
 db.run(
     'CREATE TABLE IF NOT EXISTS signup(email, username, password)',
     [],
