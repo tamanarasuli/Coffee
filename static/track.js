@@ -1,11 +1,22 @@
 /**
  * get url and replace  for the insertData"
  */
+ 
+
 function send(name, goal, intake) {
-    if (name !== ""){
-      let url = "/insertData/name/" + name + "/goal/" + goal + "/intake/" + intake;
-    console.log(url); 
-      window.location.replace(url);
+    if (name == ""){
+        return;
+    
+    } else {
+        
+         let url = "/insertData/name/" + name + "/goal/" + goal + "/intake/" + intake;
+    
+        if (typeof window == "undefined") {
+            return url; 
+        } else {
+            console.log(url); 
+            window.location.replace(url); 
+        }
     }
     
 }
@@ -79,6 +90,13 @@ function setup() {
     $('#signup').click(signUp);
 }
 
-$(document).ready(setup);
+if (typeof window == "undefined") {
+    exports.send = send; 
+} else {
+    $(document).ready(setup);  
+}
+
+
+
 
 
