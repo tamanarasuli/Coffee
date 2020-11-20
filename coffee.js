@@ -8,10 +8,7 @@ let PORT = process.env.PORT || 80;
  * Connect and create database if not exists"
  */
  
-
-
 app.use(express.static("static"));
-
 
  const sqlite3 = require('sqlite3').verbose();
     let db = new sqlite3.Database(
@@ -25,7 +22,6 @@ app.use(express.static("static"));
             }
         }
     );
-    
     
 /**
  * Create tables for the user and for the signup"
@@ -62,11 +58,9 @@ function coffee(req, res){
     insert(req, res);
 }
 
-
 /**
  * renders the pug"
  */
- 
  
 function insert(req, res) {
     db.all(
@@ -87,13 +81,9 @@ function insert(req, res) {
     );
 }
 
-
-
-
 /**
  * inserts the data from the main coffee tracker UI"
  */
-
 
 function insertData(req, res) {
     console.log(req.params);
@@ -108,12 +98,9 @@ db.run(sql, [], (err) => {
     if (err) {
          console.error(err.message);
         }
-        
         });
     });
-
     res.redirect('/'); 
-
 }
 
 /**
@@ -140,12 +127,9 @@ function insertSignUp(req, res) {
     res.redirect('/'); 
 }
 
-
 /**
  * redirects pages and gets the urls for server side"
  */
-
-
 
 app.use(express.static("static"));
 app.set('views', path.join(__dirname, 'views'));

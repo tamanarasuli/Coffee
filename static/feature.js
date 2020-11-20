@@ -1,13 +1,10 @@
 function negative(goal, intake) {
-    // let word = $("#quantity").val(); 
     let flag = false; 
     if (goal < 0 || intake < 0) {
         flag = true;
-         //alert("Enter a valid cup amount, please "); 
         return flag; 
-     } else {
-         //send(name, goal, intake); 
-     }
+    } else {
+    }
 }
 
 function empty(name, goal, intake){
@@ -16,7 +13,6 @@ function empty(name, goal, intake){
         flag = true;
         return flag;
     }
-    
 }
 
 function less(goal, intake) {
@@ -24,14 +20,8 @@ function less(goal, intake) {
     let flag = false; 
     if (intake < goal) {
         flag = true;
-         //alert("Enter a valid cup amount, please "); 
-         return flag;
-        
-     } else {
-         
-         
-         //send(name, goal, intake); 
-     }
+        return flag;
+    }
 }
 exports.negative = negative; 
 exports.less = less;

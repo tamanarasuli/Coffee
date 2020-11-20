@@ -1,16 +1,13 @@
 /**
  * get url and replace  for the insertData"
  */
- 
 
 function send(name, goal, intake) {
     if (name == ""){
         return;
-    
-    } else {
         
-         let url = "/insertData/name/" + name + "/goal/" + goal + "/intake/" + intake;
-    
+    } else{
+        let url = "/insertData/name/" + name + "/goal/" + goal + "/intake/" + intake;
         if (typeof window == "undefined") {
             return url; 
         } else {
@@ -18,7 +15,6 @@ function send(name, goal, intake) {
             window.location.replace(url); 
         }
     }
-    
 }
 
 /**
@@ -26,24 +22,14 @@ function send(name, goal, intake) {
  */
 
 function insert(email, username, password) {
-      let url = "/insertSignUp/email/" + email + "/username/" + username + "/password/" + password;
+    let url = "/insertSignUp/email/" + email + "/username/" + username + "/password/" + password;
     if(typeof window == "undefined") {
         return url; 
     } else {
         console.log(url); 
         window.location.replace(url);
-     
     }
-    //  exports.insert = insert;
-    
-    //   let url = "/insertSignUp/email/" + email + "/username/" + username + "/password/" + password;
-    //   console.log(url); 
-    //   window.location.replace(url);
-    //   console.log("made it to the insert to the signup function"); 
 }
-
-
-
 
 /**
  *Error handling"
@@ -60,7 +46,7 @@ function negative(name, goal,  intake) {
     } if (goal == 0 || intake == 0 || name == " ") {
          alert("please enter a values ");
          return true; 
-     } if (intake > goal) {
+    } if (intake > goal) {
          alert("Sorry, you did not meet your goal"); 
          send(name, goal, intake); 
     } else {
@@ -86,8 +72,9 @@ function signUp(email, name, password) {
 /**
  * call negative and define values "
  */
+ 
 function handleRespones() {
-    let name =$("#username").val();
+    let name = $("#username").val();
     let goal = $("#quantity").val();
     let intake = $("#goal").val(); 
     negative(); 
@@ -107,10 +94,5 @@ if (typeof window == "undefined") {
     exports.send = send;
     exports.insert = insert; 
 } else {
-    $(document).ready(setup);  
+    $(document).ready(setup);
 }
-
-
-
-
-
