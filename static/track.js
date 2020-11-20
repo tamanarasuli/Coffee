@@ -27,10 +27,23 @@ function send(name, goal, intake) {
 
 function insert(email, username, password) {
       let url = "/insertSignUp/email/" + email + "/username/" + username + "/password/" + password;
-      console.log(url); 
-      window.location.replace(url);
-      console.log("made it to the insert to the signup function"); 
+    if(typeof window == "undefined") {
+        return url; 
+    } else {
+        console.log(url); 
+        window.location.replace(url);
+     
+    }
+    //  exports.insert = insert;
+    
+    //   let url = "/insertSignUp/email/" + email + "/username/" + username + "/password/" + password;
+    //   console.log(url); 
+    //   window.location.replace(url);
+    //   console.log("made it to the insert to the signup function"); 
 }
+
+
+
 
 /**
  *Error handling"
@@ -91,7 +104,8 @@ function setup() {
 }
 
 if (typeof window == "undefined") {
-    exports.send = send; 
+    exports.send = send;
+    exports.insert = insert; 
 } else {
     $(document).ready(setup);  
 }
