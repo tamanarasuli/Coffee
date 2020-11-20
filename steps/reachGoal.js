@@ -14,7 +14,7 @@ Given('I set a goal of {int} cups of coffee', function (int) {
          // Given('I set a goal of {float} cups of coffee', function (float) {
           // Write code here that turns the phrase above into concrete actions
           let goal = 4;  
-          return 'goal';
+          return goal;
          });
        
 //   ? When I log 4 cups of coffee
@@ -24,7 +24,7 @@ Given('I set a goal of {int} cups of coffee', function (int) {
          // When('I log {float} cups of coffee', function (float) {
           // Write code here that turns the phrase above into concrete actions
           let log = 4;  
-          return 'log';
+          return log;
          });
        
 //   ? Then I recieve an alert congratulating me for reaching my goal
@@ -33,7 +33,7 @@ Given('I set a goal of {int} cups of coffee', function (int) {
          Then('I recieve an alert congratulating me for reaching my goal', function () {
           // Write code here that turns the phrase above into concrete actions
           let know = "congratulations, you met your goal"; 
-          return 'know';
+          return know;
          });
          
          
