@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "coffee.js",
   "scripts": {
-    "test": "mocha", 
-    "cucumber": "cucumber-js ./features -r ./step"
+    "test": "mocha",
+    "cucumber": "cucumber-js ./features -r ./steps"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,8 @@
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cucumber": "^7.0.0-rc.0"
+  },
   "description": ""
 }
